@@ -5,7 +5,7 @@
         </template>
         <template v-else>
             <address-info-box />
-            <account-header />
+            <!-- <account-header /> -->
 
             <!--            <button @click="onRemoveAccountButClick">Remove wallet</button>-->
 
@@ -26,7 +26,7 @@ import {
     SET_ACTIVE_ACCOUNT_BY_ADDRESS,
 } from '../../store/mutations.type.js';
 import { mapGetters } from 'vuex';
-import AccountHeader from '../../components/AccountHeader/AccountHeader.vue';
+// import AccountHeader from '../../components/AccountHeader/AccountHeader.vue';
 import AddressInfoBox from '../../components/AddressInfoBox/AddressInfoBox.vue';
 import FMessage from '../../components/core/FMessage/FMessage.vue';
 import { eventBusMixin } from '@/mixins/event-bus.js';
@@ -35,7 +35,7 @@ export default {
     components: {
         FMessage,
         AddressInfoBox,
-        AccountHeader,
+        // AccountHeader,
         // FMessage,
         // FCard
     },

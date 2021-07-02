@@ -3,7 +3,7 @@
         <div v-if="!$metamask.isInstalled()" class="metamask-not-installed">
             Metamask is not installed. <br /><br />
             <button class="btn large" :disabled="installMetamaskInProgress" @click="onInstallMetamaskClick">
-                Install Metamask <pulse-loader v-if="installMetamaskInProgress" color="#fff"></pulse-loader>
+                Install Metamask <pulse-loader v-if="installMetamaskInProgress" color="#121317"></pulse-loader>
             </button>
         </div>
         <template v-else>

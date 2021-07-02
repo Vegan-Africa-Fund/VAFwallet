@@ -5,21 +5,15 @@
             <div class="col balances">
                 <div class="balance">
                     <h3 class="align-center-lg">
-                        <span>{{ formatNumberByLocale(accountsBalance) }} <span class="ftm">FTM</span></span>
+                        <span>{{ accountsVAF }} <span class="ftm">VAF</span></span>
                     </h3>
-                    <div class="currency">
-                        {{ formatCurrencyByLocale(accountsBalance, this.$store.state.tokenPrice, false) }}
-                    </div>
-                    <div class="label h3">Available (Sum)</div>
+                    <div class="label h3">Balance</div>
                 </div>
                 <div class="balance total-balance">
                     <h3 class="align-center-lg">
-                        <span>{{ formatNumberByLocale(accountsTotalBalance) }} <span class="ftm">FTM</span></span>
+                        <span>{{ formatNumberByLocale(accountsBalance) }} <span class="ftm">FTM</span></span>
                     </h3>
-                    <div class="currency">
-                        {{ formatCurrencyByLocale(accountsTotalBalance, this.$store.state.tokenPrice, false) }}
-                    </div>
-                    <div class="label h3">Total (Sum)</div>
+                    <div class="label h3">Balance</div>
                 </div>
             </div>
         </div>
@@ -40,6 +34,18 @@ export default {
 
     computed: {
         ...mapGetters(['accounts']),
+        accountsVAF() {
+            let total = 0;
+            for (let i = 0, len1 = this.accounts.length; i < len1; i++) {
+                let bal = this.accounts[i].vafbalance;
+                if (isNaN(bal)) {
+                    console.log('not a good val');
+                } else {
+                    total += bal;
+                }
+            }
+            return total;
+        },
 
         accountsBalance() {
             return this.accounts.reduce((_total, _currItem) => {

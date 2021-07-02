@@ -21,6 +21,8 @@
  * @property {number} accountId Ledger account id.
  * @property {number} addressId Ledger address id.
  * @property {string[]} sites Connected sites (WebExtension only).
+ * @property {number} vafbalance vafbalance.
+ * vafbalance
  */
 
 /**

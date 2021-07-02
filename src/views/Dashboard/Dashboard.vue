@@ -6,7 +6,6 @@
             Wallets <span class="f-records-count">({{ accounts.length }})</span>
         </h2>
         <account-list edit-mode />
-
         <h2 class="h1">
             Contacts <span class="f-records-count">({{ contacts.length }})</span>
         </h2>
@@ -23,9 +22,7 @@ import ContactList from '../../components/ContactList/ContactList.vue';
 
 export default {
     name: 'Dashboard',
-
     components: { ContactList, AccountList, DashboardHeader },
-
     computed: {
         ...mapGetters(['accounts', 'contacts']),
     },

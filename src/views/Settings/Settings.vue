@@ -2,11 +2,8 @@
     <div class="view-settings">
         <h1>Settings</h1>
 
-        <h2>fWallet</h2>
+        <h2>Ⓥwallet</h2>
         <settings-form />
-
-        <h2>fUNI</h2>
-        <f-uniswap-settings />
 
         <h2>Metamask</h2>
         <metamask-settings />
@@ -19,13 +16,12 @@
 <script>
 import SettingsForm from '@/components/forms/SettingsForm.vue';
 import MetamaskSettings from '@/components/metamask/MetamaskSettings/MetamaskSettings.vue';
-import FUniswapSettings from '@/components/funi/FUniswapSettings/FUniswapSettings.vue';
 import SettingsLinks from '@/views/Settings/SettingsLinks.vue';
 
 export default {
     name: 'Settings',
 
-    components: { SettingsLinks, FUniswapSettings, MetamaskSettings, SettingsForm },
+    components: { SettingsLinks, MetamaskSettings, SettingsForm },
 };
 </script>
 

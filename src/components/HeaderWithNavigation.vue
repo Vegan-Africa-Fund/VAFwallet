@@ -174,7 +174,7 @@ export default {
     z-index: 10;
     width: 100%;
     height: $f-header-height;
-    color: #fff;
+    color: #121317;
     background-color: var(--f-primary-color);
     transition: height $transition-length ease;
 
@@ -234,7 +234,7 @@ export default {
         }
 
         a:not(.btn):hover {
-            color: #fff;
+            color: #121317;
             text-decoration: none;
         }
 
@@ -333,7 +333,7 @@ export default {
                     }
 
                     button[type='submit'] {
-                        color: #fff;
+                        color: #121317;
 
                         &:hover {
                             background-color: transparent !important;

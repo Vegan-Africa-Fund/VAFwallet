@@ -33,17 +33,17 @@
             --f-window-popover-padding: 0;
             --f-window-popover-body-padding: 0;
             --f-window-popover-color: #333;
-            --f-window-popover-background: #fff;
+            --f-window-popover-background: #121317;
 
             width: auto;
             max-width: 360px;
         }
 
         &_flistbox {
-            --f-listbox-item-background-color: #fff;
+            --f-listbox-item-background-color: #121317;
             --f-listbox-item-hover-color: inherit;
             //--f-listbox-item-hover-background-color: var(--f-primary-color-lighter);
-            --f-listbox-item-selected-color: #fff;
+            --f-listbox-item-selected-color: #121317;
             --f-listbox-item-selected-background-color: var(--f-primary-color);
 
             max-height: 300px;

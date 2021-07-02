@@ -3,14 +3,22 @@
         <f-card class="f-card-double-padding">
             <div class="small-container">
                 <p>
-                    <a href="https://fantom.foundation/how-to-use-fantom-wallet/" target="_blank">
-                        How to use Fantom fWallet
+                    <a href="https://veganafricafund.com/" target="_blank">
+                        Vegan AF
                     </a>
-                </p>
-
-                <p>
+                    <a href="https://wallet.veganafricafund.org/" target="_blank">
+                        Ⓥwallet
+                    </a>
+                    powered by
+                    <a href="https://fantom.foundation" target="_blank">
+                        Fantom,
+                    </a>
+                    <a href="https://ftmscan.com" target="_blank">
+                        FTMscan,
+                    </a>
+                    and
                     <a href="https://explorer.fantom.network/" target="_blank">
-                        Fantom Explorer
+                        Fantom Explorer.
                     </a>
                 </p>
 

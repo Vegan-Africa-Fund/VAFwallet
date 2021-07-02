@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
+import axios from 'axios';
 import VuexPersist from 'vuex-persist';
 import appConfig from '../../app.config.js';
 
@@ -120,6 +121,17 @@ export const store = new Vuex.Store({
          * @return {[WalletAccount]}
          */
         accounts(_state) {
+            console.log('account getter');
+            console.log(_state.accounts);
+            console.log('account getter above');
+            for (let i = 0, len1 = _state.accounts.length; i < len1; i++) {
+                let contract = '0x65cb07d631b652090d2a047f203207851b777956';
+                let api = `https://api.ftmscan.com/api?module=account&action=tokenbalance&contractaddress=${contract}&address=${_state.accounts[i].address}&tag=latest&apikey=CEJ99DVV8D6IGK2XCEC83TTW6S6HEM745Z`;
+                axios.get(api).then((response) => {
+                    console.log(response.data);
+                    _state.accounts[i].vafbalance = response.data.result / 1000000000000000000;
+                });
+            }
             return _state.accounts;
         },
         /**
@@ -134,6 +146,7 @@ export const store = new Vuex.Store({
          * @return {number}
          */
         currentAccountAddress(_state) {
+            console.log('currentAccountAddress');
             return _state.activeAccountAddress;
         },
         /**
@@ -172,9 +185,9 @@ export const store = new Vuex.Store({
          * @return {function(*=): ?WalletAccount}
          */
         getAccountByAddress(_state) {
+            console.log('getAccountByAddress');
             return (_address) => {
                 const address = fWallet.toChecksumAddress(_address);
-
                 return _state.accounts.find((_item) => _item.address === address);
             };
         },
@@ -187,6 +200,7 @@ export const store = new Vuex.Store({
         getAccountAndIndexByAddress(_state) {
             return (_address) => {
                 const { accounts } = _state;
+                console.log('getAccountAndIndexByAddress');
                 const address = fWallet.toChecksumAddress(_address);
                 const ret = {
                     account: null,
@@ -324,6 +338,7 @@ export const store = new Vuex.Store({
          * @param {string} _address
          */
         [SET_ACTIVE_ACCOUNT_BY_ADDRESS](_state, _address) {
+            console.log('set active account by address');
             const { accounts } = _state;
             const address = fWallet.toChecksumAddress(_address);
 
@@ -332,6 +347,12 @@ export const store = new Vuex.Store({
             for (let i = 0, len1 = accounts.length; i < len1; i++) {
                 if (accounts[i].address === address) {
                     _state.activeAccountIndex = i;
+                    let contract = '0x65cb07d631b652090d2a047f203207851b777956';
+                    let api = `https://api.ftmscan.com/api?module=account&action=tokenbalance&contractaddress=${contract}&address=${address}&tag=latest&apikey=CEJ99DVV8D6IGK2XCEC83TTW6S6HEM745Z`;
+                    axios.get(api).then((response) => {
+                        console.log(response.data);
+                        _state.accounts[i].vafbalance = response.data.result / 1000000000000000000;
+                    });
                     break;
                 }
             }
@@ -341,7 +362,10 @@ export const store = new Vuex.Store({
          * @param {string} _address
          */
         [SET_ACTIVE_ACCOUNT_ADDRESS](_state, _address) {
-            _state.activeAccountAddress = fWallet.toChecksumAddress(_address);
+            let xx = fWallet.toChecksumAddress(_address);
+            console.log(xx);
+            console.log('set active account address');
+            _state.activeAccountAddress = xx;
         },
         /**
          * @param {Object} _state
@@ -376,6 +400,7 @@ export const store = new Vuex.Store({
          * @param {{index: number, ...}} _accountData
          */
         [SET_ACCOUNT](_state, _accountData) {
+            console.log('set account');
             const { index } = _accountData;
 
             if (index !== undefined && index > -1) {
@@ -485,6 +510,7 @@ export const store = new Vuex.Store({
          * @param {Object} _keystore
          */
         async [ADD_ACCOUNT](_context, _keystore) {
+            console.log('add account');
             const address = fWallet.toChecksumAddress(_keystore.address);
             const balance = await fWallet.getBalance(address);
             const account = {
@@ -545,28 +571,35 @@ export const store = new Vuex.Store({
          * @param {Object} _context
          */
         async [UPDATE_ACCOUNTS_BALANCES](_context) {
+            // setTimeout(() => console.log('waiting?'), 0);
             const accounts = _context.getters.accounts;
-            let balance;
             let account;
-            let pendingRewards;
             // const balances = await Promise.all(accounts.map((_address) => fWallet.getBalance(_address.address)));
 
             for (let i = 0; i < accounts.length; i++) {
                 account = accounts[i];
-
-                balance = await fWallet.getBalance(account.address, false, true);
-                pendingRewards = getPendingRewards(balance);
-
-                if (account.balance !== balance.balance || !arrayEquals(account.pendingRewards, pendingRewards)) {
-                    balance = await fWallet.getBalance(account.address);
-
-                    _context.commit(SET_ACCOUNT, {
-                        ...account,
-                        balance: balance.balance,
-                        totalBalance: balance.totalValue,
-                        pendingRewards,
-                        index: i,
+                let contract = '0x65cb07d631b652090d2a047f203207851b777956';
+                let api = `https://api.ftmscan.com/api?module=account&action=tokenbalance&contractaddress=${contract}&address=${accounts[i].address}&tag=latest&apikey=CEJ99DVV8D6IGK2XCEC83TTW6S6HEM745Z`;
+                if (isNaN(accounts[i].vafbalance)) {
+                    axios.get(api).then((response) => {
+                        console.log(response.data);
+                        // setTimeout(() => console.log('waiting?'), 100000);
+                        let vafs = response.data.result / 1000000000000000000;
+                        if (isNaN(vafs)) {
+                            console.log('bad vaf check');
+                        } else {
+                            accounts[i].vafbalance = vafs;
+                            console.log('good vaf check waiting now');
+                            setTimeout(() => console.log('waiting because good check'), 10000000);
+                        }
                     });
+                } else {
+                    console.log(`already set VAF of ${accounts[i].vafbalance} for ${accounts[i].address}`);
+                }
+                if (isNaN(accounts[i].balance)) {
+                    accounts[i].balance = await fWallet.getBalance(account.address, false, true);
+                } else {
+                    console.log(`already set FTM of ${accounts[i].balance} for ${accounts[i].address}`);
                 }
             }
         },
@@ -576,17 +609,19 @@ export const store = new Vuex.Store({
          */
         async [UPDATE_ACCOUNT_BALANCE](_context, _account) {
             const account = _account || _context.getters.currentAccount;
-
+            console.log('update account balance');
+            await new Promise((r) => setTimeout(r, 10000));
             if (account) {
                 const { index } = _context.getters.getAccountAndIndexByAddress(account.address);
                 let balance = await fWallet.getBalance(account.address, false, true);
                 let pendingRewards = getPendingRewards(balance);
-
+                console.log(balance);
                 if (
                     index > -1 &&
                     (account.balance !== balance.balance || !arrayEquals(account.pendingRewards, pendingRewards))
                 ) {
                     balance = await fWallet.getBalance(account.address);
+                    // console.log(balance);
 
                     _context.commit(SET_ACCOUNT, {
                         ...account,
@@ -604,7 +639,7 @@ export const store = new Vuex.Store({
          */
         [UPDATE_ACCOUNT](_context, _accountData) {
             const { account, index } = _context.getters.getAccountAndIndexByAddress(_accountData.address);
-
+            console.log('update account');
             if (account) {
                 const name = _accountData.name !== account.address ? _accountData.name : '';
                 const { activeAccountAddress } = _context.state; // store active account address
@@ -635,7 +670,7 @@ export const store = new Vuex.Store({
             const { account, index } = _context.getters.getAccountAndIndexByAddress(_address);
             const accounts = _context.getters.accounts;
             let activeAccountRemoved = false;
-
+            console.log('remove account by address');
             if (account) {
                 accounts.splice(index, 1);
 
@@ -654,7 +689,7 @@ export const store = new Vuex.Store({
         [ADD_CONTACT](_context, _contact) {
             const { order } = _contact;
             const contacts = _context.getters.contacts;
-
+            console.log('add contact');
             delete _contact.order;
 
             _context.commit(APPEND_CONTACT, _contact);
@@ -672,7 +707,7 @@ export const store = new Vuex.Store({
          */
         [UPDATE_CONTACT](_context, _contact) {
             const { contact, index } = _context.getters.getContactAndIndexByAddress(_contact.address);
-
+            console.log('update contact');
             if (contact) {
                 const name = _contact.name !== contact.address ? _contact.name : '';
                 const { order } = _contact;

@@ -1,7 +1,7 @@
 .f-window {
     &.colored-header {
         header {
-            color: #fff;
+            color: #121317;
         }
 
         .body {
@@ -62,7 +62,7 @@
 
     &.popover.light {
         --f-window-popover-color: var(--f-doc-color);
-        --f-window-popover-background: #fff;
+        --f-window-popover-background: #121317;
 
         &.popover-menu {
             header {

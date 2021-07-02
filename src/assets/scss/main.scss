@@ -50,6 +50,14 @@ main {
     padding-bottom: 32px;
 }
 
+a.action{
+  font-size: 3rem;
+  background-color: var(--f-darker-color-2);
+  padding: 2rem;
+  border-radius: 3rem;
+  font-style: normal;
+}
+
 @include links() {
     text-decoration: none;
 }
@@ -233,7 +241,7 @@ button .v-spinner {
     width: 256px;
     //margin: 0 auto 32px auto;
     margin: 32px auto 16px auto;
-    outline: 5px solid #fff;
+    outline: 5px solid #121317;
 }
 
 .currency-light {

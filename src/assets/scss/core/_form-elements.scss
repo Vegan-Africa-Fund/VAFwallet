@@ -3,7 +3,7 @@ input:-webkit-autofill, input:-webkit-autofill:focus {
 }
 
 @include inputs() {
-    --f-input-background-color: #fff;
+    --f-input-background-color: #121317;
     --f-input-readonly-background: var(--f-input-background-color);
 
     font-family: $input-font-family;

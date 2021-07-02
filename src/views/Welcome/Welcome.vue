@@ -1,8 +1,8 @@
 <template>
     <div class="welcome-view">
         <div class="intro">
-            <h1>Welcome to Fantom fWallet</h1>
-            <h2>Send, receive and stake your Opera FTM</h2>
+            <h1>Welcome to Vegan AF wallet</h1>
+            <h2>Send, receive and ⓋAFs</h2>
         </div>
 
         <div class="view-account-main">
@@ -24,7 +24,6 @@
                 </router-link>-->
             </div>
 
-            <installation-info />
             <account-list />
             <connect-wallet-window ref="connectWalletWindow" />
         </div>
@@ -33,7 +32,6 @@
 
 <script>
 import AccountList from '../../components/AccountList/AccountList.vue';
-import InstallationInfo from '../../components/InstallationInfo/InstallationInfo.vue';
 import ConnectWalletWindow from '@/components/windows/ConnectWalletWindow/ConnectWalletWindow.vue';
 
 // import {WEIToFTM} from "../utils/transactions.js";
@@ -42,7 +40,6 @@ export default {
 
     components: {
         ConnectWalletWindow,
-        InstallationInfo,
         AccountList,
     },
 

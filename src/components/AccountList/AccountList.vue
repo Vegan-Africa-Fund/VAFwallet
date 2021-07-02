@@ -75,22 +75,25 @@
                                 </span>
                             </span>
                             <span class="col col-6-md">
-                                <span class="value">{{ toFTM(account.balance) }} <span class="ftm">FTM</span></span>
-                                <span class="currency">
-                                    {{ formatCurrencyByLocale(account.balance, tokenPrice) }}
-                                </span>
-                                <span class="label">Available</span>
-                            </span>
-                            <span class="col col-6-md">
                                 <span class="value">
-                                    {{ toFTM(account.totalBalance) }} <span class="ftm">FTM</span>
+                                    {{ account.vafbalance }}
+                                    <span class="ftm">VAF</span>
                                 </span>
                                 <span class="currency">
-                                    {{ formatCurrencyByLocale(account.totalBalance, tokenPrice) }}
+                                    <router-link
+                                        v-if="account.symbol !== 'SFTM'"
+                                        :to="{
+                                            name: 'account-send-erc20',
+                                            params: { token: { ...account.address } },
+                                        }"
+                                        class="action"
+                                        title="Send VAFs"
+                                    >
+                                        Transfer
+                                    </router-link>
                                 </span>
-                                <span class="label">Total</span>
+                                <!-- <span class="label">Total</span> -->
                             </span>
-
                             <!--
                             <span v-if="editMode" class="col-1 col-2-md align-right">
                                 <ul class="account-edit-actions">
@@ -181,6 +184,15 @@ export default {
         ...mapGetters(['accounts', 'currentAccount']),
 
         tokenPrice() {
+            console.log('-------');
+            console.log(this.accounts);
+            // let ax = this.accounts;
+            // ax.map((account) => {
+            //     console.log(account);
+            //     console.log('xxxxxx');
+            //     return account;
+            // });
+            console.log(this.$store.state);
             return this.$store.state.tokenPrice;
         },
     },
@@ -238,6 +250,26 @@ export default {
     },
 
     methods: {
+        /**
+         * @param {string} _address
+         * @return {string}
+         */
+        async getVAFs(_address) {
+            // let apikey = 'CEJ99DVV8D6IGK2XCEC83TTW6S6HEM745Z';
+            console.log(_address);
+            // let add = '0xba821dc848803900c01ba7ac1d7a034b95b1ed97';
+            let contract = '0x65cb07d631b652090d2a047f203207851b777956';
+            let apikey = 'Q7KEX42J31WNBAH8FNVSYS7P351WHS4YIM';
+            const headers = new Headers();
+            headers.append('Authorization', 'api_key');
+            const request = new Request(
+                `https://api.ftmscan.com/api?module=account&action=tokenbalance&contractaddress=${contract}&address=${_address}&tag=latest&apikey=${apikey}`
+            );
+            let response = await fetch(request).then((response) => response.json());
+            console.log('just before the end');
+            console.log(response.result);
+            return response.result;
+        },
         /**
          * @param {string} _address
          */

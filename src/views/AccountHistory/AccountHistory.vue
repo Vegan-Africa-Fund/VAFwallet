@@ -1,52 +1,32 @@
 <template>
     <div class="view-account-history account-main-content-mt">
-        <f-tabs>
-            <template #transactions>
-                Transactions
-                <span class="f-records-count">({{ transactionsRecordsCount }})</span>
-            </template>
-            <template #assets>
-                Assets
-                <span class="f-records-count">({{ assetsRecordsCount }})</span>
-            </template>
-            <template #assets-old>
-                Assets old
-                <span class="f-records-count">({{ assetsRecordsCount }})</span>
-            </template>
-
-            <f-tab title-slot="transactions">
-                <account-transaction-list
-                    :key="currentAccount.address"
-                    :address="currentAccount.address"
-                    @records-count="onTransactionsRecordsCount"
-                />
-            </f-tab>
-            <f-tab title-slot="assets">
-                <f-card>
-                    <wallet-assets-list
-                        :tokens="erc20Tokens"
-                        :f-mint-account="fMintAccount"
-                        @records-count="onAssetsRecordsCount"
-                    />
-                </f-card>
-            </f-tab>
-        </f-tabs>
+        <wallet-assets-list
+            :tokens="erc20Tokens"
+            :f-mint-account="fMintAccount"
+            @records-count="onAssetsRecordsCount"
+        />
+        <!-- <h1>transactions</h1>
+        <account-transaction-list
+            :key="currentAccount.address"
+            :address="currentAccount.address"
+            @records-count="onTransactionsRecordsCount"
+        /> -->
     </div>
 </template>
 
 <script>
-import AccountTransactionList from '@/components/data-tables/AccountTransactionList.vue';
+// import AccountTransactionList from '@/components/data-tables/AccountTransactionList.vue';
 import { mapGetters } from 'vuex';
-import FTabs from '@/components/core/FTabs/FTabs.vue';
-import FTab from '@/components/core/FTabs/FTab.vue';
+// import FTabs from '@/components/core/FTabs/FTabs.vue';
+// import FTab from '@/components/core/FTabs/FTab.vue';
 import { eventBusMixin } from '@/mixins/event-bus.js';
-import FCard from '@/components/core/FCard/FCard.vue';
+// import FCard from '@/components/core/FCard/FCard.vue';
 import WalletAssetsList from '@/components/data-tables/WalletAssetsList/WalletAssetsList.vue';
 
 export default {
     name: 'AccountHistory',
 
-    components: { WalletAssetsList, FCard, FTab, FTabs, AccountTransactionList },
+    components: { WalletAssetsList },
 
     mixins: [eventBusMixin],
 

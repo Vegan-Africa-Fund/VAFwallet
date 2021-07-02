@@ -118,9 +118,9 @@
                             v-if="item.symbol !== 'SFTM'"
                             :to="{ name: 'account-send-erc20', params: { token: { ...item } } }"
                             class="action"
-                            title="Send"
+                            title="Send zz"
                         >
-                            Send
+                            Send aa
                         </router-link>
                     </div>
                 </div>
@@ -129,9 +129,9 @@
                         v-if="item.symbol !== 'SFTM'"
                         :to="{ name: 'account-send-erc20', params: { token: { ...item } } }"
                         class="action"
-                        title="Send"
+                        title="Send cc"
                     >
-                        Send
+                        Send bb
                     </router-link>
                 </template>
             </template>

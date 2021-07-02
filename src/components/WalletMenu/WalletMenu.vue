@@ -19,8 +19,7 @@
             <div class="body">
                 <div class="logo">
                     <router-link to="/" class="logo-link">
-                        <icon data="@/assets/svg/fantom.svg" width="40" height="50" />
-                        <span class="wallet-label">fWallet</span>
+                        <span class="wallet-label">Ⓥwallet</span>
                     </router-link>
                 </div>
                 <f-simple-navigation :items="navigation" />
@@ -28,7 +27,7 @@
             <div class="footer">
                 <social-media-links />
                 <div class="copyright">
-                    <a href="https://fantom.foundation/" target="_blank" rel="nofollow">©2020 Fantom Foundation</a>
+                    <a href="https://veganafricafund.com/" target="_blank" rel="nofollow">©2021 Vegan AF</a>
                 </div>
             </div>
         </div>
@@ -47,23 +46,7 @@ import { mapGetters, mapState } from 'vuex';
 import { helpersMixin } from '../../mixins/helpers.js';
 import homeIcon from '../../assets/svg/monochrome/Sidebar/Home.svg';
 import settingsIcon from '../../assets/svg/monochrome/Sidebar/Settings.svg';
-import walletIcon from '../../assets/svg/monochrome/Sidebar/Wallet.svg';
-// import defiIcon from '../../assets/svg/monochrome/Sidebar/DeFi.svg';
-import stakingIcon from '../../assets/svg/monochrome/Sidebar/Staking.svg';
-import funiIcon from '../../assets/svg/monochrome/Sidebar/fUNI.svg';
-import swapIcon from '../../assets/svg/defi/ftrade.svg';
-import voteIcon from '../../assets/svg/monochrome/Sidebar/Governance.svg';
-import fmintIcon from '../../assets/svg/defi/mint.svg';
-
-/*
-import homeIcon from '../../assets/svg/home.svg';
-import settingsIcon from '../../assets/svg/settings.svg';
-import walletIcon from '../../assets/svg/wallet.svg';
-import defiIcon from '../../assets/svg/defi.svg';
-import stakingIcon from '../../assets/svg/stake.svg';
-import swapIcon from '../../assets/svg/defi/ftrade.svg';
-import voteIcon from '../../assets/svg/thumb.svg';
-*/
+import walletIcon from '../../assets/svg/monochrome/Sidebar/Staking.svg';
 
 const ACCOUNT_DEFAULT_VIEW = 'account-history';
 
@@ -84,7 +67,6 @@ export default {
             default: false,
         },
     },
-
     data() {
         return {
             /** Is drawer visible? */
@@ -105,63 +87,9 @@ export default {
                     url: {
                         name: ACCOUNT_DEFAULT_VIEW,
                     },
-                    title: 'Wallet',
+                    title: 'Send',
                     icon: walletIcon,
                     walletLink: true,
-                    fill: true,
-                },
-                {
-                    url: {
-                        name: 'staking',
-                    },
-                    title: 'Staking',
-                    icon: stakingIcon,
-                    stakingLink: true,
-                    fill: true,
-                },
-                {
-                    url: {
-                        name: 'fmint',
-                    },
-                    title: 'fMint',
-                    icon: fmintIcon,
-                    fillColor: true,
-                    fmintLink: true,
-                },
-                {
-                    url: {
-                        name: 'fswap',
-                    },
-                    title: 'fSwap',
-                    icon: swapIcon,
-                    fill: true,
-                    fswapLink: true,
-                },
-                /*{
-                    url: {
-                        name: 'defi',
-                    },
-                    title: 'DeFi',
-                    icon: defiIcon,
-                    deFiLink: true,
-                    fill: true,
-                },*/
-                {
-                    url: {
-                        name: 'funiswap',
-                    },
-                    title: 'fUNI',
-                    icon: funiIcon,
-                    fill: true,
-                    fUniswapLink: true,
-                },
-                {
-                    url: {
-                        name: 'gov',
-                    },
-                    title: 'Governance',
-                    icon: voteIcon,
-                    govLink: true,
                     fill: true,
                 },
                 {
@@ -176,7 +104,6 @@ export default {
             ],
         };
     },
-
     computed: {
         /**
          * Container's css classes.
@@ -195,7 +122,6 @@ export default {
 
         ...mapGetters(['currentAccount', 'accounts']),
     },
-
     watch: {
         /**
          * Watches for vue route change.
@@ -231,12 +157,10 @@ export default {
 */
         },
     },
-
     mounted() {
         this.setWalletUrl();
         this.onMenuBreakpoint(this.breakpoints);
     },
-
     methods: {
         hamburgerSwitchOff() {
             const fHamburgerSwitch = this.findChildByName('f-hamburger-switch');
@@ -266,14 +190,7 @@ export default {
          */
         setWalletUrl(_account) {
             this.setMenuItemUrl('walletLink', _account);
-            this.setMenuItemUrl('stakingLink', _account, 'staking');
-            // this.setMenuItemUrl('deFiLink', _account, 'defi-home');
-            this.setMenuItemUrl('fmintLink', _account, 'defi-fmint');
-            this.setMenuItemUrl('fswapLink', _account, 'defi-ftrade');
-            this.setMenuItemUrl('fUniswapLink', _account, 'funiswap-swap');
-            this.setMenuItemUrl('govLink', _account, 'gov-home');
         },
-
         /**
          * @param {string} _propName
          * @param {object} [_account]

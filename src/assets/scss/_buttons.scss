@@ -51,15 +51,15 @@
 }
 
 @include buttons('.white-btn.light') {
-    color: #fff;
+    color: #121317;
 }
 
 @include buttons('.white-btn.light:not([disabled]):not(.disabled):hover') {
-    color: #fff;
+    color: #121317;
     background-color: rgba(255, 255, 255, 0.25);
 }
 @include buttons('.white-btn.light:not([disabled]):not(.disabled):focus') {
-    color: #fff;
+    color: #121317;
     background-color: rgba(255, 255, 255, 0.25);
 }
 

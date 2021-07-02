@@ -4,44 +4,15 @@
             <div class="small-container">
                 <template v-if="isMetamaskInstalled">
                     <div class="metamasksettings_section">
-                        <h3>Networks</h3>
+                        <h3>Add Network</h3>
                         <button
                             id="add_mainnet_btn"
                             class="btn large"
                             :disabled="addFantomMainnetInProgress"
                             @click="onAddChainClick('mainnet')"
                         >
-                            Add Fantom Opera Mainnet
-                            <pulse-loader v-if="addFantomMainnetInProgress" color="#fff"></pulse-loader>
-                        </button>
-                        <button
-                            id="add_testnet_btn"
-                            class="btn large secondary"
-                            :disabled="addFantomTestnetInProgress"
-                            @click="onAddChainClick('testnet')"
-                        >
-                            Add Fantom Testnet
-                            <pulse-loader v-if="addFantomTestnetInProgress" color="#1969ff"></pulse-loader>
-                        </button>
-                    </div>
-
-                    <div class="metamasksettings_section">
-                        <h3>Assets</h3>
-                        <button
-                            id="add_token_btn"
-                            class="btn large"
-                            :disabled="addTokenInProgress"
-                            @click="onAddTokenClick"
-                        >
-                            Add Token <pulse-loader v-if="addTokenInProgress" color="#fff"></pulse-loader>
-                        </button>
-                        <button
-                            id="add_custom_token_btn"
-                            class="btn large secondary"
-                            :disabled="addCustomTokenInProgress"
-                            @click="onAddCustomTokenClick"
-                        >
-                            Add Custom Token <pulse-loader v-if="addCustomTokenInProgress" color="#fff"></pulse-loader>
+                            Fantom Opera Mainnet
+                            <pulse-loader v-if="addFantomMainnetInProgress" color="#121317"></pulse-loader>
                         </button>
                     </div>
 
@@ -79,7 +50,7 @@
                 </template>
                 <template v-else>
                     <button class="btn large" :disabled="installMetamaskInProgress" @click="onInstallMetamaskClick">
-                        Install Metamask <pulse-loader v-if="installMetamaskInProgress" color="#fff"></pulse-loader>
+                        Install Metamask <pulse-loader v-if="installMetamaskInProgress" color="#121317"></pulse-loader>
                     </button>
                 </template>
             </div>

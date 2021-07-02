@@ -84,7 +84,7 @@ $bp-large: 992px !default;
 
 // main colors
 $body-color: #444 !default;
-$body-bg-color: #fff !default;
+$body-bg-color: #121317 !default;
 $link-color: #00c !default;
 $theme-color: #4e85bb !default;
 $theme-light-color: #f4f4f4 !default;
@@ -102,7 +102,7 @@ $button-text-align: center !default;
 $button-text-transform: initial !default;
 $button-text-shadow: none !default;
 $button-white-space: nowrap !default;
-$button-color: #fff !default;
+$button-color: #121317 !default;
 $button-v-padding: 0.25rem !default;
 $button-h-padding: 1.5rem !default;
 $button-mi-v-padding: 0 !default;
@@ -134,7 +134,7 @@ $input-disabled-color: #888 !default;
 $input-disabled-border-color: #ccc !default;
 $input-disabled-bg-color: #f0f0f0 !default;
 $input-readonly-bg-color: #fefff2 !default;
-//$input-bg-color: #fff !default;
+//$input-bg-color: #121317 !default;
 //$input-hover-bg-color: darken($input-bg-color, 10%) !default;
 $input-v-padding: 0.75rem !default;
 $input-h-padding: 0.75rem !default;
@@ -159,8 +159,8 @@ $input-invalid-border-color: #c00 !default;
 $input-invalid-outline-shadow-color: rgba(200, 0, 0, 0.5) !default;
 
 // checkbox, radio
-//$checkbox-color: #fff !default;
-//$checkbox-bg-color: #fff !default;
+//$checkbox-color: #121317 !default;
+//$checkbox-bg-color: #121317 !default;
 $checkbox-width: 0.2rem !default;
 $checkbox-radius: 0.2rem !default;
 $checkbox-transition-length: 150ms !default;
@@ -210,10 +210,10 @@ $elev-shadow-opacities-list:
     0.4 !default;
 
 // boxes
-$box-bg: #fff !default;
+$box-bg: #121317 !default;
 $box-border: none !default;
 $box-border-radius: initial !default;
-$box-left-info-col-bg: #fff !default;
+$box-left-info-col-bg: #121317 !default;
 $box-left-info-col-width: 180px !default;
 $box-left-info-col-bp-medium-width: 120px !default;
 $box-left-info-col-bp-small-width: 80px !default;
@@ -221,10 +221,9 @@ $box-left-info-col-bp-small-width: 80px !default;
 
 // screen
 $screen-bg-color: #F3F0EA !default;
-$screen-header-bg-color: #000 !default;
+$screen-header-bg-color: #121317 !default;
 $screen-header-height: 3rem !default;
-$screen-footer-color: #fff !default;
-$screen-footer-bg-color: #000 !default;
+$screen-footer-color: #121317 !default;
+$screen-footer-bg-color: #121317 !default;
 $screen-footer-height: 3rem !default;
 $screen-fixed-header-bg-color: rgba(20,20,20,0.6) !default;
-

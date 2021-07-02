@@ -1,6 +1,6 @@
 import './defi.types.js';
 import gql from 'graphql-tag';
-import { cloneObject, isObjectEmpty, lowercaseFirstChar } from '../../utils';
+import { cloneObject, isObjectEmpty } from '../../utils';
 import web3utils from 'web3-utils';
 import { fFetch } from '@/plugins/ffetch.js';
 import { TokenPairs } from '@/utils/token-pairs.js';
@@ -281,11 +281,7 @@ export class DeFi {
      * @return {string}
      */
     getTokenSymbol(_token) {
-        return _token && _token.symbol
-            ? _token.symbol !== 'FTM'
-                ? lowercaseFirstChar(_token.symbol)
-                : _token.symbol
-            : '';
+        return _token && _token.symbol;
     }
 
     /**
