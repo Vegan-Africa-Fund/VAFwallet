@@ -1,0 +1,2 @@
+VAFwallet:
+  component: "@sls-vue/serverless-component"

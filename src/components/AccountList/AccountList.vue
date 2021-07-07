@@ -86,10 +86,9 @@
                                             name: 'account-send-erc20',
                                             params: { token: { ...account.address } },
                                         }"
-                                        class="action"
+                                        class=""
                                         title="Send VAFs"
                                     >
-                                        Transfer
                                     </router-link>
                                 </span>
                                 <!-- <span class="label">Total</span> -->

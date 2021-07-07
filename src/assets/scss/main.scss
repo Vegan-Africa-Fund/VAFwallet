@@ -51,9 +51,12 @@ main {
 }
 
 a.action{
-  font-size: 3rem;
-  background-color: var(--f-darker-color-2);
-  padding: 2rem;
+  font-size: 2rem;
+  color: var(--f-doc-color)!important;
+  background-color: var(--f-primary-color);
+  padding: 0.5rem;
+  padding-left: 3rem;
+  padding-right: 3rem;
   border-radius: 3rem;
   font-style: normal;
 }

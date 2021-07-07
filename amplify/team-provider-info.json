@@ -1,0 +1,14 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-vafwallet-dev-140323-authRole",
+      "UnauthRoleArn": "arn:aws:iam::448414654622:role/amplify-vafwallet-dev-140323-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::448414654622:role/amplify-vafwallet-dev-140323-authRole",
+      "Region": "af-south-1",
+      "DeploymentBucketName": "amplify-vafwallet-dev-140323-deployment",
+      "UnauthRoleName": "amplify-vafwallet-dev-140323-unauthRole",
+      "StackName": "amplify-vafwallet-dev-140323",
+      "StackId": "arn:aws:cloudformation:af-south-1:448414654622:stack/amplify-vafwallet-dev-140323/f2f5ea20-df12-11eb-9558-061001a6bf5e"
+    }
+  }
+}
